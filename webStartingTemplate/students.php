@@ -1,3 +1,12 @@
+<?php
+$server="localhost";
+$username="root";
+$password="";
+$database="zalego";
+$conn = mysqli_connect($server,$username,$password,$database);
+$sqlQuery = mysqli_query($conn,"SELECT * FROM enrollment");
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +27,7 @@
 		<nav>
 			<ul>
 				<li>
-					<a href="students.html">
+					<a href="students.php">
 						<span><i class="fa fa-group"></i></span>
 						<span>Students</span>
 					</a>
@@ -60,15 +69,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Purity mburu</td>
-                                    <td>+2547115695262</td>
-                                    <td>Puritymburu370@gmail.com</td>
-                                    <td>Female</td>
-                                    <td>Web design and development</td>
-                                    <td>23rd Aug 2022</td>
-                                    <td>
+                               <?php while($fetchRecords =mysqli_fetch_array($sqlQuery)) { ?>
+								<tr>
+									<td><?php echo $fetchRecords['no']?></td>
+									<td><?php echo $fetchRecords['fullname']?></td>
+									<td><?php echo $fetchRecords['phonenumber']?></td>
+									<td><?php echo $fetchRecords['email']?></td>
+									<td><?php echo $fetchRecords['gender']?></td>
+									<td><?php echo $fetchRecords['course']?></td>
+									<td><?php echo $fetchRecords['created_at']?></td>
+									<td>
                                         <a href="#" class="btn btn-primary btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
@@ -79,7 +89,8 @@
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
-                                </tr>
+								</tr>
+								<?php }?>
                             </tbody>
                         </table>
                     </div>
@@ -91,4 +102,3 @@
 <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
-	
