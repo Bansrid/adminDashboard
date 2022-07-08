@@ -4,6 +4,30 @@ $queryUser= mysqli_query($conn,"SELECT * FROM enrollment WHERE no='".$_GET['id']
 while($fetchUser= mysqli_fetch_array($queryUser))
 {
     $fullname= $fetchUser['fullname'];
+    $phonenumber= $fetchUser['phonenumber'];
+    $email= $fetchUser['email'];
+    $gender= $fetchUser['gender'];
+    $course= $fetchUser['course'];
+}
+//update user records
+if(isset ($_POST['updaterecords']))
+{
+    //fetch form data
+    $name = $_POST['fullname'];
+    $phone = $_POST['phonenumber'];
+    $emailaddress= $_POST['email'];
+    $formgender = $_POST['gender'];
+    $formcourse = $_POST['course'];
+    //update records
+    $updateQuery = mysqli_query($conn,"UPDATE enrollment SET fullname='$name',phonenumber='$phone',email='$emailaddress',gender='$formgender',course='$formcourse')sd 
+    WHERE no='".$-GET['id']."' ");
+    if($updateQuery)
+    {
+        echo "Data updated";
+    }
+    else{
+        echo "Error occured";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -23,9 +47,53 @@ while($fetchUser= mysqli_fetch_array($queryUser))
                         <div class="card-header bg-dark text-white text-center">
                             <h4>Edit student: <?php echo $fullname?></h4>
                         </div>
-                    </div>
+                        <div class="card-body">
+                        <form action="edit-enrollment.php" method="POST">
+            <div class="row">
+                <div class="col-lg-6">
+                    <label for="fullname" class="form-label"><b>Fullname:</b></label>
+                    <input type="text" class="form-control" value= "<?php echo $fullname ?>" name="fullname" placeholder="Enter your full name">
+                </div>
+
+                <div class="col-lg-6">
+                    <label for="phonenumber" class="form-label"><b>Phonenumber:</b></label>
+                    <input type="tel" class="form-control" value="<?php echo $phonenumber ?>" name ="phonenumber"  placeholder="+2547...">
+                </div>
+          </div>
+        
+        
+          <div class="row">
+            <div class="col-lg-6">
+                <label for="email" class="form-label"><b>Email address:</b></label>
+                <input type="email" value="<?php echo $email ?>" class="form-control" name="email" placeholder="Enter your email">
+            </div>
+            
+                <div class="col-lg-6">
+                    <label for="gender" class="form-label"><b>What is your gender</b></label>
+                    <select class="form-control" name="gender"  aria-label="Default select example">
+                        <option <?php $gender?>></option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
                 </div>
             </div>
+                <div class="mb-5 mt-5 col-lg-6">
+                    <label for="course" class="form-label"><b>What's your preffered course?</b></label>
+                    <select class="form-control" name="course"  aria-label="Default select example">
+                        <option value="disable selected"><?php $course ?></option>
+                        <option value="Web design">Web design</option>
+                        <option value="Web development">Web development</option>
+                        <option value="Android">Android</option>
+                        <option value="Game development">Game development</option>
+                        <option value="Graphic design">Graphic design</option>
+                        <option value="Cyber security">Cyber security</option>
+                    </select>
+                </div>
+            </div>
+        <br>
+         <button type="updaterecords"name="updaterecords" class="btn btn-outline-primary">update records</button>
+     </form>
+     </div>
 		</div>
 	</div>
 	<?php require_once('includes/scripts.php') ?>
