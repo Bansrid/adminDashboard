@@ -34,7 +34,7 @@ if(isset ($_POST['updaterecords']))
 <html>
 <?php require_once('includes/headers.php') ?>
 <body>
-	<!-- All our code. write here   -->
+	<!-- All our code. write here   -->x
 	<?php require_once('includes/navbar.php') ?>
 	<div class="sidebar">
 	    <?php require_once('includes/sidebar.php') ?>
