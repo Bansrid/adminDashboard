@@ -25,8 +25,8 @@ $sqlquery = mysqli_query($conn,"SELECT * FROM contactus");
 							<thead>
 								<tr>
 									<th>No.</th>
-									<th>Fullname Name</th>
-									<th>Phone Number</th>
+									<th>Fullname</th>
+									<th>Phone-Number</th>
 									<th>Email</th>
 									<th>message</th>
 									<th>created_at</th>
@@ -36,11 +36,22 @@ $sqlquery = mysqli_query($conn,"SELECT * FROM contactus");
 								<?php while($fetchRecords = mysqli_fetch_array($sqlquery)) {?>
 									<tr>
 										<td><?php echo $fetchRecords['no']?></td>
-										<td><?php echo $fetchRecords['fullnamename']?></td>
-										<td><?php echo $fetchRecords['phonenumber']?></td>
+										<td><?php echo $fetchRecords['fullname']?></td>
+										<td><?php echo $fetchRecords['phone-number']?></td>
 										<td><?php echo $fetchRecords['email']?></td>
 										<td><?php echo $fetchRecords['message']?></td>
 										<td><?php echo $fetchRecords['created_at']?></td>
+										<td>
+                                            <a href="edit-enrollment.php?id=<?php echo $fetchRecords['no']?>" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-info btn-sm">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                    </td>
 									</tr>
 								<?php }?>
 								
