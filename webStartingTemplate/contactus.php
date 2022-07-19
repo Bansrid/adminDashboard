@@ -42,7 +42,7 @@ $sqlquery = mysqli_query($conn,"SELECT * FROM contactus");
 										<td><?php echo $fetchRecords['message']?></td>
 										<td><?php echo $fetchRecords['created_at']?></td>
 										<td>
-                                            <a href="edit-enrollment.php?id=<?php echo $fetchRecords['no']?>" class="btn btn-primary btn-sm">
+                                            <a href="edit-contactus.php?id=<?php echo $fetchRecords['no']?>" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                             <a href="#" class="btn btn-info btn-sm">

@@ -1,4 +1,5 @@
 <?php
+$message="";
 require_once('logics/dbconnection.php');
 $queryUser= mysqli_query($conn,"SELECT * FROM enrollment WHERE no='".$_GET['id']."' ");
 while($fetchUser= mysqli_fetch_array($queryUser))
@@ -20,7 +21,7 @@ if(isset ($_POST['updaterecords']))
     $formcourse = $_POST['course'];
     //update records
     $updateQuery = mysqli_query($conn,"UPDATE enrollment SET fullname='$name',phonenumber='$phone',email='$emailaddress',gender='$formgender',course='$formcourse')sd 
-    WHERE no='".$-GET['id']."' ");
+    WHERE no='".$_GET['id']."'"); 
     if($updateQuery)
     {
         echo "Data updated";
@@ -34,7 +35,7 @@ if(isset ($_POST['updaterecords']))
 <html>
 <?php require_once('includes/headers.php') ?>
 <body>
-	<!-- All our code. write here   -->x
+	<!-- All our code. write here   -->
 	<?php require_once('includes/navbar.php') ?>
 	<div class="sidebar">
 	    <?php require_once('includes/sidebar.php') ?>
@@ -45,7 +46,7 @@ if(isset ($_POST['updaterecords']))
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header bg-dark text-white text-center">
-                            <h4>Edit student: <?php echo $fullname?></h4>
+                            <h4>Edit student: <?php echo $message?></h4>
                         </div>
                         <div class="card-body">
                         <form action="edit-enrollment.php" method="POST">
