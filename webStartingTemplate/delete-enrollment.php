@@ -7,4 +7,7 @@ if($sqldeletestudent)
     header('location:students.php');
 }
 else
+{
+    echo "Error occured"
+}
 ?>

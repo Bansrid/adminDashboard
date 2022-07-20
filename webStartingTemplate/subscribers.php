@@ -1,14 +1,15 @@
 <?php
 require_once('logics/dbconnection.php');
-$sqlQuery = mysqli_query($conn,"SELECT * FROM enrollment");
-
+$sqlsubscribers = mysqli_query($conn,"SELECT * FROM subscribers");
 ?>
 <!DOCTYPE html>
 <html> 
 <?php require_once('includes/headers.php')?>
 <body>
 	<!-- All our code. write here   -->
+    <div class="header">
 	<?php require_once('includes/navbar.php') ?>
+    </div>
 	<div class="sidebar">
 	<?php require_once('includes/sidebar.php') ?>
 	</div>
@@ -17,42 +18,32 @@ $sqlQuery = mysqli_query($conn,"SELECT * FROM enrollment");
 			<div class="row pt-3">
 				<div class="col-lg-12">
 					<div class="card-header bg-dark text-center text-white">
-						<span>students 
-                            <a href="enroll-students.php"><button type="submit" class="btn btn-success float-right"><i class="fa fa-plus"></i></button>
-                        </span>
+						<span>subscribers</span>
 					</div>
                     <div class="card-body">
                         <table class="table table-striped table-hover table-responsive" style="font-style: 12px;">
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Full Name</th>
-                                    <th>Phone Number</th>
                                     <th>Email</th>
-                                    <th>Gender</th>
-                                    <th>Course</th>
-                                    <th>Enrolled on</th>
+                                    <th>created_at</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                               <?php while($fetchRecords =mysqli_fetch_array($sqlQuery)) { ?>
+                               <?php while($fetchsubscriber =mysqli_fetch_array($sqlsubscribers)) { ?>
 								<tr>
-									<td><?php echo $fetchRecords['no']?></td>
-									<td><?php echo $fetchRecords['fullname']?></td>
-									<td><?php echo $fetchRecords['phonenumber']?></td>
-									<td><?php echo $fetchRecords['email']?></td>
-									<td><?php echo $fetchRecords['gender']?></td>
-									<td><?php echo $fetchRecords['course']?></td>
-									<td><?php echo $fetchRecords['created_at']?></td>
+									<td><?php echo $fetchsubscriber['no']?></td>
+									<td><?php echo $fetchsubscriber['email']?></td>
+									<td><?php echo $fetchsubscriber['created_at']?></td>
 									<td>
-                                        <a href="edit-enrollment.php?id=<?php echo $fetchRecords['no']?>" class="btn btn-primary btn-sm">
+                                        <a href="edit-subscriber.php?id=<?php echo $fetchsubscriber['no']?>" class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="#" class="btn btn-info btn-sm">
+                                        <a href="view-subscriber.php?id=<?php echo $fetchsubscriber['no']?>" class="btn btn-info">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <a href="#" class="btn btn-danger btn-sm">
+                                        <a href="delete-subscriber.php?id=<?php echo $fetchsubscriber['no']?>" class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
