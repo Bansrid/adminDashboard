@@ -5,11 +5,6 @@ $sqlQuery = mysqli_query($conn,"SELECT * FROM enrollment");
 <!DOCTYPE html>
 <html> 
 <?php require_once('includes/headers.php')?>
-<div class="row">
-        <div class="col-lg-6">
-		    <button type="add"  name= "add-student"class="btn btn-primary">Add students</button>
-	    </div>
-	    </div>	
 <body>
 	<!-- All our code. write here   --> 
 	<?php require_once('includes/navbar.php') ?>

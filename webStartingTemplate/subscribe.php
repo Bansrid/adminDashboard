@@ -18,7 +18,7 @@ $sqlquery = mysqli_query($conn,"SELECT * FROM contactus");
 			<div class="row">
 				<div class="col-lg-12 pt-3">
 					<div class="card-header bg-dark text-white text-center">
-						<span>Contactus</span>
+						<span>subscribe</span>
 					</div>
 					<div class="card-body">
 						<table class="table table-striped table-hover">
@@ -43,7 +43,7 @@ $sqlquery = mysqli_query($conn,"SELECT * FROM contactus");
 										<td><?php echo $fetchRecords['created_at']?></td>
 										<td>
                                             <a href="edit-contactus.php?id=<?php echo $fetchRecords['no']?>" class="btn btn-primary btn-sm">
-                                                <i class="fa fa-comments"></i>
+                                                <i class="fa fa-envelope"></i>
                                             </a>
                                             <a href="#" class="btn btn-info btn-sm">
                                                 <i class="fa fa-eye"></i>
@@ -65,4 +65,3 @@ $sqlquery = mysqli_query($conn,"SELECT * FROM contactus");
 	<?php require_once('includes/scripts.php')?>
 </body>
 </html>
-              

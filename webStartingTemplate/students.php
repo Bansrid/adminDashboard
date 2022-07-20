@@ -17,7 +17,7 @@ $sqlQuery = mysqli_query($conn,"SELECT * FROM enrollment");
 			<div class="row pt-3">
 				<div class="col-lg-12">
 					<div class="card-header bg-dark text-center text-white">
-						<span>students</span>
+						<span>students</span> <a href="edit-contactus.php" class="btn btn-primary btn-sm">Add students</a>
 					</div>
                     <div class="card-body">
                         <table class="table table-striped table-hover table-responsive">
